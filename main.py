@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -30,6 +31,12 @@ def main():
                 return
 
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            isCollided = player.colliding(asteroid)
+            if isCollided == True:
+                print("Game over!")
+                sys.exit()
 
         screen.fill("black")
         
